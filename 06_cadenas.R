@@ -100,6 +100,79 @@ str_trim(x) # str_trim()elimina los espacios en blanco al principio y al final d
 
 # Coincidencia de patrones con expresiones regulares
 
+x <- c("manzana", "banana", "pera")
+str_view(x, "an")
+str_view(x, ".a.")
+
+dot <- "\\."
+writeLines(dot)
+
+print(str_view(c("abc", "a.c", "bef"), "a\\.c"))
+
+x <- "a\\b"
+writeLines(x)
+str_view(x, "\\\\")
+
+
+# anclajes
+
+x <- c("manzana", "banana", "pera")
+str_view(x, "^a")
+x
+str_view(x, "a$")
+x
+
+x <- c("apple pie", "apple", "apple cake")
+str_view(x, "apple")
+str_view(x, "^apple$")
+x
+
+str_view(c("abc", "a.c", "a*c", "a c"), "a[.]c")
+
+
+Examples
+Run examples
+
+str_view(c("abc", "def", "fgh"), "[aeiou]")
+str_view(c("abc", "def", "fgh"), "^")
+str_view(c("abc", "def", "fgh"), "..")
+
+# Show all matches with str_view_all
+str_view_all(c("abc", "def", "fgh"), "d|e")
+
+# Use match to control what is shown
+str_view(c("abc", "def", "fgh"), "d|e")
+str_view(c("abc", "def", "fgh"), "d|e", match = TRUE)
+str_view(c("abc", "def", "fgh"), "d|e", match = FALSE)
+
+str_view(c("abc", "ac", "a*c", "a c"), ".[*]c")
+
+str_view(c("abc", "ac", "a*c", "ac"), "a[ ]")
+
+str_view(c("grey", "gray"), "gr(e|a)y")
+
+x <- "1888 is the longest year in Roman numerals: MDCCCLXXXVIII"
+str_view(x, "CC?")
+
+# detectar coincidencias
+
+
+x <- c("apple", "banana", "pear")
+str_detect(x, "e")
+
+x <- "the How many tee common words start with t?"
+str_detect(x, "^t")
+
+x <- "What proportion of common words end with a vowel?"
+sum(str_detect(x, "[aeiou]$"))
+
+
+
+
+
+
+
+
 
 
 
